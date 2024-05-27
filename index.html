@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="navbar">
+    <h1><a href="/" class="h1">My ToDoist</a></h1>
+</div>
+<form action="/" method="POST" class="cont1">
+    <input type="text" name="task" id="task" placeholder="Add your new todo" autocomplete="off">
+    <button type="submit" class="btnadtsk">Add Task</button>
+</form>
+{% if alltodo|length == 0 %}
+
+<div class="empty"></div>
+
+{% else %}
+<table>
+    <tbody>
+        {% for todo in alltodo %}
+
+        <tr>
+            <td class="text">{{todo.task}}</td>
+            <td class="text">{{todo.date_created}}</td>
+            <td class="tdbtn">
+                <a href="/delete/{{todo.sno}}" class="a">
+                    <button type="button" class="btndone">Done</button>
+                </a>
+            </td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endif %}
+
+{% endblock content %}
