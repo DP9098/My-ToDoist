@@ -20,7 +20,6 @@ def home():
     if request.method == 'POST':
         task = request.form['task']
         Todo = todo(task=task)
-        # print(Todo)
         db.session.add(Todo)
         db.session.commit()
     alltodo = todo.query.all()
@@ -34,4 +33,4 @@ def delete(sno):
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
